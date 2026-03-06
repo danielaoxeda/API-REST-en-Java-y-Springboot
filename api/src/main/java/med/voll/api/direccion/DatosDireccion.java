@@ -1,12 +1,15 @@
 package med.voll.api.direccion;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 public record DatosDireccion(
-        String calle,
+        @NotBlank String calle,
         String numero,
         String complemento,
-        String barrio,
-        String codigo_postal,
-        String ciudad,
-        String provincia
+        @NotBlank String barrio,
+        @NotBlank @Pattern(regexp = "\\d{5}") String codigo_postal,
+        @NotBlank String ciudad,
+        @NotBlank String provincia
 ) {
 }
