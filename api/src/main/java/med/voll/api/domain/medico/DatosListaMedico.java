@@ -1,9 +1,4 @@
-package med.voll.api.medico;
-
-import lombok.NonNull;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.server.RepresentationModelAssembler;
-import org.springframework.stereotype.Component;
+package med.voll.api.domain.medico;
 
 public record DatosListaMedico(
         Long id,
