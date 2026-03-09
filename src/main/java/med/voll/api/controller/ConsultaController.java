@@ -9,6 +9,7 @@ import med.voll.api.domain.consulta.ReservaConsultas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -16,19 +17,20 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/consultas")
+@Validated
 @SecurityRequirement(name = "bearer-key")
 public class ConsultaController {
 
     @Autowired
-    ReservaConsultas reserva;
+    private ReservaConsultas reserva;
 
     @PostMapping
     @Transactional
     public ResponseEntity reservar(@RequestBody @Valid DatosReservaConsulta datos) {
 
         var detalleConsulta = reserva.reservar(datos);
-        return ResponseEntity.ok(detalleConsulta);
 
+        return ResponseEntity.ok(detalleConsulta);
     }
 
     @DeleteMapping

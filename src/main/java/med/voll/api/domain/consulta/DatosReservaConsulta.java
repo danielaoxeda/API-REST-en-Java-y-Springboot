@@ -8,12 +8,16 @@ import java.time.LocalDateTime;
 
 public record DatosReservaConsulta(
 
+        @NotNull
         Long idMedico,
+
         @NotNull
         Long idPaciente,
+
         @NotNull
         @Future
         LocalDateTime fecha,
+
         Especialidad especialidad
 ) {
 }

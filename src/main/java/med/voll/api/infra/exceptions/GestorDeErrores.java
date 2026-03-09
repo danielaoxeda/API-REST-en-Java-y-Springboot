@@ -29,6 +29,11 @@ public class GestorDeErrores {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity gestionarErrorBodyVacio() {
+        return ResponseEntity.badRequest().body("El cuerpo de la solicitud es obligatorio");
+    }
+
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity gestionarErrorBadCredentials() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
